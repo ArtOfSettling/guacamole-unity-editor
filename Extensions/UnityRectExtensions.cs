@@ -1,9 +1,12 @@
 ﻿using WellFired.Guacamole;
 
-public static class UnityRectExtensions 
+namespace WellFired.Guacamole.Unity.Editor
 {
-	public static UIRect ToUIRect(this UnityEngine.Rect source)
+	public static class UnityRectExtensions 
 	{
-		return new UIRect((int)source.x, (int)source.y, (int)source.width, (int)source.height);
+		public static UIRect ToUIRect(this UnityEngine.Rect source)
+		{
+			return new UIRect((int)source.x, (int)source.y, (int)source.width, (int)source.height);
+		}
 	}
 }

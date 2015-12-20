@@ -1,9 +1,12 @@
 ﻿using WellFired.Guacamole;
 
-public static class UnityVector2Extensions 
+namespace WellFired.Guacamole.Unity.Editor
 {
-	public static UISize ToUISize(this UnityEngine.Vector2 source)
+	public static class UnityVector2Extensions 
 	{
-		return new UISize ((int)source.x, (int)source.y);
+		public static UISize ToUISize(this UnityEngine.Vector2 source)
+		{
+			return new UISize ((int)source.x, (int)source.y);
+		}
 	}
 }
