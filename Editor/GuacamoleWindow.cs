@@ -62,10 +62,28 @@ namespace WellFired.Guacamole.Unity.Editor
 
 		public void OnGUI()
 		{
-			if(Event.current.type == EventType.Layout)
-				MainContent.Layout ();
-			if(Event.current.type == EventType.Repaint)
-				MainContent.Render ();
+			if (Event.current.type == EventType.Layout) 
+			{
+				try
+				{
+					MainContent.Layout (Rect);
+				}
+				catch(Exception e) 
+				{
+					Debug.Log ("Exception was thrown whilst performing Layout : " + e);
+				}
+			}
+			if (Event.current.type == EventType.Repaint) 
+			{
+				try
+				{
+					MainContent.Render ();
+				}
+				catch(Exception e) 
+				{
+					Debug.Log ("Exception was thrown whilst performing Repaint : " + e);
+				}
+			}
 		}
 	}
 }
