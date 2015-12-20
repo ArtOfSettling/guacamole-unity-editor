@@ -1,5 +1,4 @@
 ﻿using UnityEditor;
-using UnityEngine;
 
 namespace WellFired.Guacamole.Unity.Editor
 {
