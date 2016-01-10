@@ -1,21 +1,20 @@
-﻿using UnityEditor;
-using WellFired.Guacamole;
+﻿using System;
 using System.Reflection;
+using UnityEditor;
+using WellFired.Guacamole;
 
 namespace WellFired.Guacamole.Unity.Editor
 {
 	public class Application : WellFired.Guacamole.IApplication
 	{
-		public IWindow MainWindow 
+		public void Launch(ApplicationInitializationContext initializationContext)
 		{
-			get;
-			set;
-		}
+			if(initializationContext == null)
+				throw new InitializationContextNull();
 
-		public void Launch()
-		{
 			NativeRendererHelper.LaunchedAssembly = Assembly.GetExecutingAssembly();
-			MainWindow = EditorWindow.GetWindow<GuacamoleWindow>();
+			var mainWindow = EditorWindow.GetWindow<GuacamoleWindow>();
+			mainWindow.Launch(initializationContext.ScriptableObject);
 		}
 	}
 }
