@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
@@ -40,14 +41,8 @@ namespace WellFired.Guacamole.Unity.Editor
 		{ 
 			get 
 			{
-				if(window == null) 
-				{
-					var contentType = ApplicationInitializationContextScriptableObject.MainContent;
-					window = (Window)contentType.GetConstructor(new Type[] { }).Invoke(new object[] { });
-
-					if (window == null)
-						throw new GuacamoleWindowCantBeCreated();
-				}
+				if(window == null)
+					ResetForSomeReason();
 
 				return window;
 			}
@@ -69,7 +64,7 @@ namespace WellFired.Guacamole.Unity.Editor
 			if(MaxSize == UISize.Min)
 				MaxSize = new UISize(100000, 100000);
 
-			Debug.Log("Constructing : " + MainContent);
+			ResetForSomeReason();
 		}
 
 		public void OnGUI()
@@ -78,7 +73,9 @@ namespace WellFired.Guacamole.Unity.Editor
 			{
 				try
 				{
-					MainContent.Layout (Rect);
+					var layoutRect = Rect;
+					layoutRect.Location = UILocation.Min;
+					MainContent.Layout(layoutRect);
 				}
 				catch(Exception e) 
 				{
@@ -89,13 +86,23 @@ namespace WellFired.Guacamole.Unity.Editor
 			{
 				try
 				{
-					MainContent.Render ();
+					MainContent.Render();
 				}
 				catch(Exception e) 
 				{
 					Debug.Log ("Exception was thrown whilst performing Repaint : " + e);
 				}
 			}
+		}
+
+		private void ResetForSomeReason()
+		{
+			NativeRendererHelper.LaunchedAssembly = Assembly.GetExecutingAssembly();
+			var contentType = ApplicationInitializationContextScriptableObject.MainContent;
+			window = (Window)contentType.GetConstructor(new Type[] { }).Invoke(new object[] { });
+
+			if (window == null)
+				throw new GuacamoleWindowCantBeCreated();
 		}
 	}
 }

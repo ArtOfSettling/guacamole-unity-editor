@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Reflection;
 using UnityEditor;
 using WellFired.Guacamole;
 
@@ -11,8 +10,7 @@ namespace WellFired.Guacamole.Unity.Editor
 		{
 			if(initializationContext == null)
 				throw new InitializationContextNull();
-
-			NativeRendererHelper.LaunchedAssembly = Assembly.GetExecutingAssembly();
+			
 			var mainWindow = EditorWindow.GetWindow<GuacamoleWindow>();
 			mainWindow.Launch(initializationContext.ScriptableObject);
 		}

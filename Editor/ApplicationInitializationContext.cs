@@ -17,7 +17,7 @@ namespace WellFired.Guacamole.Unity.Editor
 			{
 				if (mainContent == null) 
 				{
-					throw new System.NotSupportedException ();
+					mainContent = Type.GetType(mainContentString);
 				}
 
 				return mainContent; 

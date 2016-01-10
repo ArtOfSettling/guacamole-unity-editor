@@ -3,7 +3,7 @@ using WellFired.Guacamole;
 
 namespace WellFired.Guacamole.Unity.Editor
 {
-	public class BaseRenderer : INativeRenderer
+	public abstract class BaseRenderer : INativeRenderer
 	{
 		#region INativeRenderer implementation
 		public ViewBase Control 
@@ -11,6 +11,8 @@ namespace WellFired.Guacamole.Unity.Editor
 			get;
 			set;
 		}
+
+		public abstract void Render(UIRect renderRect);
 		#endregion
 	}
 }
