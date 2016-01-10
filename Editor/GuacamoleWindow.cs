@@ -7,8 +7,13 @@ namespace WellFired.Guacamole.Unity.Editor
 {
 	public class GuacamoleWindow : EditorWindow, IWindow
 	{
+		[SerializeField]
+		private ApplicationInitializationContextScriptableObject applicationInitializationContextScriptableObject;
 		private ApplicationInitializationContextScriptableObject ApplicationInitializationContextScriptableObject
-		{ get; set; }
+		{ 
+			get { return applicationInitializationContextScriptableObject; } 
+			set { applicationInitializationContextScriptableObject = value; } 
+		}
 
 		[SerializeField]
 		private WellFired.Guacamole.Window window;
@@ -98,6 +103,7 @@ namespace WellFired.Guacamole.Unity.Editor
 		private void ResetForSomeReason()
 		{
 			NativeRendererHelper.LaunchedAssembly = Assembly.GetExecutingAssembly();
+
 			var contentType = ApplicationInitializationContextScriptableObject.MainContent;
 			window = (Window)contentType.GetConstructor(new Type[] { }).Invoke(new object[] { });
 

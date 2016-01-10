@@ -61,6 +61,8 @@ namespace WellFired.Guacamole.Unity.Editor
 			set { title = value; }
 		}
 
+		public void OnEnable() { hideFlags = HideFlags.HideAndDontSave; }
+
 		#region IInitializationContext implementation
 		public void ValidateSetup()
 		{
