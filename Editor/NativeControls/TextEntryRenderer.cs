@@ -8,7 +8,7 @@ namespace WellFired.Guacamole.Unity.Editor
 	{
 		public override void Render(UIRect renderRect)
 		{
-			var entry = Control as Entry;
+			var entry = Control as TextEntry;
 			entry.Text = UnityEditor.EditorGUI.TextField(renderRect.ToUnityRect(), entry.Label, entry.Text);
 		}
 	}
