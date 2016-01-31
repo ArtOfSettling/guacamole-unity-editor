@@ -1,10 +1,10 @@
 ﻿using UnityEditor;
 using WellFired.Guacamole;
 
-[assembly : CustomRenderer(typeof(Window), typeof(WellFired.Guacamole.Unity.Editor.WindowRenderer))]
+[assembly : CustomRenderer(typeof(AdjacentLayout), typeof(WellFired.Guacamole.Unity.Editor.AdjacentLayoutRenderer))]
 namespace WellFired.Guacamole.Unity.Editor
 {
-	public class WindowRenderer : BaseRenderer
+	public class AdjacentLayoutRenderer : BaseRenderer
 	{
 		public override void Render(UIRect renderRect)
 		{
