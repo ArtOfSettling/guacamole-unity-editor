@@ -91,7 +91,7 @@ namespace WellFired.Guacamole.Unity.Editor
 			{
 				try
 				{
-					MainContent.Render();
+					MainContent.Render(parentRect: Rect);
 				}
 				catch(Exception e) 
 				{
