@@ -87,16 +87,14 @@ namespace WellFired.Guacamole.Unity.Editor
 					Debug.Log ("Exception was thrown whilst performing Layout : " + e);
 				}
 			}
-			if (Event.current.type == EventType.Repaint) 
+
+			try
 			{
-				try
-				{
-					MainContent.Render(parentRect: Rect);
-				}
-				catch(Exception e) 
-				{
-					Debug.Log ("Exception was thrown whilst performing Repaint : " + e);
-				}
+				MainContent.Render(parentRect: Rect);
+			}
+			catch(Exception e) 
+			{
+				Debug.Log ("Exception was thrown whilst performing Repaint : " + e);
 			}
 		}
 

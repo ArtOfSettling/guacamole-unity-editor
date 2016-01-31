@@ -8,7 +8,11 @@ namespace WellFired.Guacamole.Unity.Editor
 	{
 		public override void Render(UIRect renderRect)
 		{
-			UnityEditor.EditorGUI.DrawRect(renderRect.ToUnityRect(), Control.BackgroundColor.ToUnityColor());
+			var button = Control as Button;
+			if(UnityEngine.GUI.Button(renderRect.ToUnityRect(), button.Text)) 
+			{
+				EditorUtility.DisplayDialog("a", "a", "a");
+			}
 		}
 	}
 }
