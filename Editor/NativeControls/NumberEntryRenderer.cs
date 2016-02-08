@@ -9,7 +9,10 @@ namespace WellFired.Guacamole.Unity.Editor
 		public override void Render(UIRect renderRect)
 		{
 			var entry = Control as NumberEntry;
-			entry.Number = UnityEditor.EditorGUI.FloatField(renderRect.ToUnityRect(), entry.Label, entry.Number);
+			var newNumber = UnityEditor.EditorGUI.FloatField(renderRect.ToUnityRect(), entry.Label, entry.Number);
+
+			if(newNumber != entry.Number)
+				entry.Number = newNumber;
 		}
 	}
 }
