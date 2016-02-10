@@ -17,6 +17,7 @@ namespace WellFired.Guacamole.Databinding.Unity.Editor
 				return false;
 
 			storage = value;
+			UnityEditor.EditorUtility.SetDirty(this);
 			OnPropertyChanged(propertyName);
 			return true;
 		}
