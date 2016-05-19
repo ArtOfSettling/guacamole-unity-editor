@@ -1,6 +1,4 @@
-﻿using WellFired.Guacamole;
-
-namespace WellFired.Guacamole.Unity.Editor
+﻿namespace WellFired.Guacamole.Unity.Editor
 {
 	public static class UIColorExtensions 
 	{
