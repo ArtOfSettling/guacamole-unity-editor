@@ -29,7 +29,7 @@ namespace WellFired.Guacamole.Unity.Editor
 			TextStyle.hover.textColor = entry.TextColor.ToUnityColor();
 			TextStyle.normal.textColor = entry.TextColor.ToUnityColor();
 
-			entry.Text = UnityEditor.EditorGUI.TextField(renderRect.ToUnityRect(), entry.Label, entry.Text, TextStyle);
+			entry.Text = UnityEditor.EditorGUI.TextField(renderRect.ToUnityRect(), entry.Text, TextStyle);
 		}
 	}
 }
