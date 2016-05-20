@@ -24,6 +24,8 @@ namespace WellFired.Guacamole.Unity.Editor
 			TextStyle.hover.background = BackgroundTexture;
 			TextStyle.normal.background = BackgroundTexture;
 
+			TextStyle.alignment = UITextAlignExtensions.Combine(entry.HorizontalTextAlign, entry.VerticalTextAlign);
+
 			TextStyle.focused.textColor = entry.TextColor.ToUnityColor();
 			TextStyle.active.textColor = entry.TextColor.ToUnityColor();
 			TextStyle.hover.textColor = entry.TextColor.ToUnityColor();
