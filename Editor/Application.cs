@@ -1,10 +1,8 @@
-﻿using System;
-using UnityEditor;
-using WellFired.Guacamole;
+﻿using UnityEditor;
 
 namespace WellFired.Guacamole.Unity.Editor
 {
-	public class Application : WellFired.Guacamole.IApplication
+	public class Application : IApplication
 	{
 		public void Launch(ApplicationInitializationContext initializationContext)
 		{
