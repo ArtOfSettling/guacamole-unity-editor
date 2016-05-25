@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using UnityEngine;
 
-namespace WellFired.Guacamole.Databinding.Unity.Editor
+namespace WellFired.Guacamole.Databinding.Unity.Runtime
 {
 	public class ObservableScriptableObject : ScriptableObject, INotifyPropertyChanged
 	{
@@ -13,7 +13,7 @@ namespace WellFired.Guacamole.Databinding.Unity.Editor
 		/// </summary>
 		protected bool SetProperty<T>(ref T storage, T value, string propertyName)
 		{
-			if(Object.Equals(storage, value))
+			if(Equals(storage, value))
 				return false;
 
 			storage = value;
