@@ -176,7 +176,7 @@ namespace WellFired.Guacamole.Databinding.Unity.Editor
 				else if (field.Type == SerializedPropertyType.ObjectReference)
 				{
 					var oldValue = (UnityEngine.Object)field.GetValue();
-					var newValue = EditorGUILayout.ObjectField(field.Name, oldValue, field.Info.PropertyType, emptyOptions);
+					var newValue = EditorGUILayout.ObjectField(field.Name, oldValue, field.Info.PropertyType, true, emptyOptions);
 					if (oldValue != newValue)
 						field.SetValue(newValue);
 				}
