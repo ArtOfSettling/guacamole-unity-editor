@@ -19,8 +19,8 @@ namespace WellFired.Guacamole.Unity.Editor
 				BackgroundTexture = Texture2DExtensions.CreateRoundedTexture(
 					64,
 					64,
-					Control.BackgroundColor.ToUnityColor(),
-					Control.BackgroundColor.ToUnityColor(),
+					Control.BackgroundColor,
+					Control.BackgroundColor,
 					64.0f);
 			}
 

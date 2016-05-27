@@ -27,17 +27,20 @@ namespace WellFired.Guacamole.Unity.Editor
 			return result;
 		}
 
-		public static Texture2D CreateRoundedTexture(int width, int height, Color backgroundColor, Color outlineColor, float radius)
+		public static Texture2D CreateRoundedTexture(int width, int height, UIColor backgroundColor, UIColor outlineColor, float radius)
 		{
-			var pixelColors = new Color[width * height];
-			for (var i = 0; i < pixelColors.Length; i++)
-				pixelColors[i] = backgroundColor;
-
 			var result = new Texture2D(width, height)
 			{
 				wrapMode = TextureWrapMode.Clamp
 			};
 
+			var pixelData = new UIColor[width * height];
+			var path = new GraphicsPath(new Rect(0, 0, width, height));
+
+			path.FillWith(backgroundColor);
+			path.Fill(ref pixelData, width, height);
+
+			/*
 			var widthOrHeightSmallest = Math.Min(width, height);
 			var xCornerOffset = Math.Min(10, widthOrHeightSmallest);
 			var yCornerOffset = Math.Min(10, widthOrHeightSmallest);
@@ -84,8 +87,9 @@ namespace WellFired.Guacamole.Unity.Editor
 
 				pixelColors[x + y * width] = Color.black;
 			}
+			*/
 
-			result.SetPixels(pixelColors);
+			result.SetPixels(pixelData.ToList().Select(pixel => pixel.ToUnityColor()).ToArray());
 			result.Apply();
 			result.hideFlags = HideFlags.HideAndDontSave;
 
@@ -184,6 +188,7 @@ namespace WellFired.Guacamole.Unity.Editor
 		
 		public static GraphicsPath RoundCorners(Vector[] points, float radius)
 		{
+			/*
 			var retval = new GraphicsPath();
 
 			if (points.Length < 3)
@@ -274,6 +279,8 @@ namespace WellFired.Guacamole.Unity.Editor
 			}
 			retval.CloseAllFigures();
 			return retval;
+			*/
+			return null;
 		}
 
 		private static double GetLength(double dx, double dy)
