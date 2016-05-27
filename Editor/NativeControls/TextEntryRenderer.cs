@@ -15,7 +15,14 @@ namespace WellFired.Guacamole.Unity.Editor
 				TextStyle = new GUIStyle();
 
 			if (BackgroundTexture == null)
-				BackgroundTexture = Texture2DExtensions.CreateTexture(1, 1, Control.BackgroundColor.ToUnityColor());
+			{
+				BackgroundTexture = Texture2DExtensions.CreateRoundedTexture(
+					64,
+					64,
+					Control.BackgroundColor.ToUnityColor(),
+					Control.BackgroundColor.ToUnityColor(),
+					64.0f);
+			}
 
 			var entry = Control as TextEntry;
 
@@ -30,6 +37,9 @@ namespace WellFired.Guacamole.Unity.Editor
 			TextStyle.active.textColor = entry.TextColor.ToUnityColor();
 			TextStyle.hover.textColor = entry.TextColor.ToUnityColor();
 			TextStyle.normal.textColor = entry.TextColor.ToUnityColor();
+
+			const int offset = 16;
+			TextStyle.border = new RectOffset(offset, offset, offset, offset);
 
 			entry.Text = UnityEditor.EditorGUI.TextField(renderRect.ToUnityRect(), entry.Text, TextStyle);
 		}
