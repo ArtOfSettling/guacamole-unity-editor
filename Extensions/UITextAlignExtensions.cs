@@ -13,25 +13,25 @@ namespace WellFired.Guacamole.Unity.Editor
 					switch(verticalAlign)
 					{
 						case UITextAlign.Start: return TextAnchor.UpperLeft;
-						case UITextAlign.Midle: return TextAnchor.UpperCenter;
-						case UITextAlign.End: return TextAnchor.UpperRight;
+						case UITextAlign.Middle: return TextAnchor.MiddleLeft;
+						case UITextAlign.End: return TextAnchor.LowerLeft;
 						default:
 							throw new ArgumentOutOfRangeException("verticalAlign", verticalAlign, null);
 					}
-				case UITextAlign.Midle:
+				case UITextAlign.Middle:
 					switch (verticalAlign)
 					{
-						case UITextAlign.Start: return TextAnchor.MiddleLeft;
-						case UITextAlign.Midle: return TextAnchor.MiddleCenter;
-						case UITextAlign.End: return TextAnchor.MiddleRight;
+						case UITextAlign.Start: return TextAnchor.UpperCenter;
+						case UITextAlign.Middle: return TextAnchor.MiddleCenter;
+						case UITextAlign.End: return TextAnchor.LowerCenter;
 						default:
 							throw new ArgumentOutOfRangeException("verticalAlign", verticalAlign, null);
 					}
 				case UITextAlign.End:
 					switch (verticalAlign)
 					{
-						case UITextAlign.Start: return TextAnchor.LowerLeft;
-						case UITextAlign.Midle: return TextAnchor.LowerCenter;
+						case UITextAlign.Start: return TextAnchor.UpperRight;
+						case UITextAlign.Middle: return TextAnchor.MiddleRight;
 						case UITextAlign.End: return TextAnchor.LowerRight;
 						default:
 							throw new ArgumentOutOfRangeException("verticalAlign", verticalAlign, null);
