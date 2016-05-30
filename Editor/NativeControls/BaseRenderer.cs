@@ -1,5 +1,4 @@
-﻿using UnityEditor;
-using WellFired.Guacamole;
+﻿using System.ComponentModel;
 
 namespace WellFired.Guacamole.Unity.Editor
 {
@@ -13,6 +12,11 @@ namespace WellFired.Guacamole.Unity.Editor
 		}
 
 		public abstract void Render(UIRect renderRect);
+
+		public virtual void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
+		{
+
+		}
 		#endregion
 	}
 }
