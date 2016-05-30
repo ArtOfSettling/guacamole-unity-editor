@@ -99,9 +99,6 @@ namespace WellFired.Guacamole.Unity.Editor
 			result.Apply();
 			result.hideFlags = HideFlags.HideAndDontSave;
 
-			var bytes = result.EncodeToPNG();
-			File.WriteAllBytes(Application.dataPath + "/../SavedScreen.png", bytes);
-
 			return result;
 		}
 	}
