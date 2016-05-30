@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.ComponentModel;
+using UnityEngine;
 using WellFired.Guacamole;
 
 [assembly : CustomRenderer(typeof(TextEntry), typeof(WellFired.Guacamole.Unity.Editor.TextEntryRenderer))]
@@ -7,22 +8,13 @@ namespace WellFired.Guacamole.Unity.Editor
 	public class TextEntryRenderer : BaseRenderer
 	{
 		private GUIStyle TextStyle { get; set; }
-		private Texture2D BackgroundTexture { get; set; } 
 
 		public override void Render(UIRect renderRect)
 		{
+			base.Render(renderRect);
+
 			if (TextStyle == null)
 				TextStyle = new GUIStyle();
-
-			if (BackgroundTexture == null)
-			{
-				BackgroundTexture = Texture2DExtensions.CreateRoundedTexture(
-					64,
-					64,
-					Control.BackgroundColor,
-					Control.BackgroundColor,
-					64.0f);
-			}
 
 			var entry = Control as TextEntry;
 
@@ -38,8 +30,11 @@ namespace WellFired.Guacamole.Unity.Editor
 			TextStyle.hover.textColor = entry.TextColor.ToUnityColor();
 			TextStyle.normal.textColor = entry.TextColor.ToUnityColor();
 
-			const int offset = 16;
-			TextStyle.border = new RectOffset(offset, offset, offset, offset);
+			var offset = (float)entry.CornerRadius;
+			var smallest = (int)(Mathf.Min(offset, Mathf.Min(renderRect.Width * 0.5f, renderRect.Height * 0.5f)) + 0.5f);
+			smallest = Mathf.Max(smallest, 2);
+			TextStyle.border = new RectOffset(smallest, smallest, smallest, smallest);
+			TextStyle.padding = new RectOffset(smallest, smallest, 0, 0);
 
 			entry.Text = UnityEditor.EditorGUI.TextField(renderRect.ToUnityRect(), entry.Text, TextStyle);
 		}
