@@ -17,8 +17,8 @@ namespace WellFired.Guacamole.Unity.Editor
 				Style = new GUIStyle();
 
 			Style.focused.background = BackgroundTexture;
-			Style.active.background = BackgroundTexture;
-			Style.hover.background = BackgroundTexture;
+			Style.active.background = ActiveBackgroundTexture;
+			Style.hover.background = HoverBackgroundTexture;
 			Style.normal.background = BackgroundTexture;
 
 			var button = Control as Button;
@@ -36,8 +36,7 @@ namespace WellFired.Guacamole.Unity.Editor
 			Style.border = new RectOffset(smallest, smallest, smallest, smallest);
 			Style.padding = new RectOffset(smallest, smallest, 0, 0);
 
-			if (GUI.Button(renderRect.ToUnityRect(), button.Text, Style)) 
-				EditorUtility.DisplayDialog("a", "a", "a");
+			GUI.Button(renderRect.ToUnityRect(), button.Text, Style);
 		}
 	}
 }

@@ -17,8 +17,8 @@ namespace WellFired.Guacamole.Unity.Editor
 				Style = new GUIStyle();
 
 			Style.focused.background = BackgroundTexture;
-			Style.active.background = BackgroundTexture;
-			Style.hover.background = BackgroundTexture;
+			Style.active.background = ActiveBackgroundTexture;
+			Style.hover.background = HoverBackgroundTexture;
 			Style.normal.background = BackgroundTexture;
 			
 			var label = Control as Label;
